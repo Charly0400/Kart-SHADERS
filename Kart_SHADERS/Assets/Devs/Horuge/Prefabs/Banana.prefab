@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9181937981168794762}
   - component: {fileID: 8520765672009465584}
   - component: {fileID: 5718740945440744986}
+  - component: {fileID: 5491031217239851156}
   m_Layer: 0
   m_Name: Banana
   m_TagString: Untagged
@@ -97,3 +98,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5491031217239851156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638036008931063264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5256f8c579999c4bb055fc3da188caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  banana: {fileID: 0}
+  bananaSpawner: {fileID: 0}
