@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 167196310}
   - component: {fileID: 167196309}
   - component: {fileID: 167196308}
+  - component: {fileID: 167196313}
   - component: {fileID: 167196307}
   m_Layer: 0
   m_Name: Cube
@@ -176,6 +177,8 @@ MonoBehaviour:
   itemB: 0
   maxItems: 1
   boosted: 0
+  bananaScript: {fileID: 0}
+  mushroomScript: {fileID: 0}
   banana: {fileID: 1638036008931063264, guid: 3713e737ad80c4f45861b09e4745747c, type: 3}
   bananaSpawner: {fileID: 957310090}
   speed: 5
@@ -258,6 +261,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &167196313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167196306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc9fd4eeb0145d42a398b7b7721bc91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &957310089
 GameObject:
   m_ObjectHideFlags: 0

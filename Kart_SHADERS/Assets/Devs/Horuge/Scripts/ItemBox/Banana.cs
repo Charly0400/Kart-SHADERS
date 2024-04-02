@@ -1,28 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Banana : MonoBehaviour
 {
     [SerializeField] string playerTag = "Player";
     private float originalPlayerSpeed;
+    private Player player;
 
-    private void OnTriggerEnter(Collider other)
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag(playerTag).GetComponent<Player>();
+    }
+
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(playerTag))
         {
-            Player playerScript = other.GetComponent<Player>();
-            if (playerScript != null)
+            if (player != null)
             {
-                originalPlayerSpeed = playerScript.speed;
-                playerScript.speed = 0f;
+                originalPlayerSpeed = player.speed;
+                player.speed = 0f;
                 Destroy(gameObject);
-                playerScript.Invoke("OgSpeed", 2f);
+                player.Invoke("OgSpeed", 2f);
             }
             else
             {
                 Debug.LogError("No se encontró el script del jugador en el objeto colisionado.");
             }
         }
+    }
+
+    public void Activate()
+    {
+        player.itemB -= 1;
+        Instantiate(player.banana, player.bananaSpawner.position, Quaternion.identity);
     }
 }

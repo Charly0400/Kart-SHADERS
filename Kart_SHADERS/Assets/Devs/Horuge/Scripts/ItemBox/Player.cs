@@ -9,11 +9,20 @@ public class Player : MonoBehaviour
     public int maxItems = 1;
 
     public bool boosted = false;
+    
+    public Banana bananaScript;
+    public Mushroom mushroomScript;
 
     public GameObject banana;
     public Transform bananaSpawner;
 
     public float speed = 5f;
+
+    void Start()
+    {
+        bananaScript = banana.GetComponent<Banana>();
+        mushroomScript = GetComponent<Mushroom>();
+    }
 
     void Update()
     {
@@ -24,17 +33,16 @@ public class Player : MonoBehaviour
 
         transform.Translate(movement);
 
-        if (itemA >= 1 && Input.GetKeyDown(KeyCode.Space) && !boosted)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            itemA -= 1;
-            speed += 5;
-            Invoke("OgSpeed", 5f);
-            boosted = true;
-        }
-        if (itemB >= 1 && Input.GetKeyDown(KeyCode.E))
-        {
-            itemB -= 1;
-            Instantiate(banana, bananaSpawner.position, Quaternion.identity);
+            if (itemA >= 1 && !boosted)
+            {
+                mushroomScript.Activate();
+            }
+            if (itemB >= 1)
+            {
+                bananaScript.Activate();
+            }
         }
     }
 
