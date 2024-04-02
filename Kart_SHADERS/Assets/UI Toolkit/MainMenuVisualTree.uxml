@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=d54c95adbfd62ee419ce19dc6dd739da&amp;type=3#MainMenuStyle" />
+    <ui:VisualElement name="Container">
+        <ui:Label text="&quot;Karts&quot;" display-tooltip-when-elided="true" name="Header" enable-rich-text="true" class="header" style="-unity-text-align: middle-center;" />
+        <ui:Button text="Start" display-tooltip-when-elided="true" class="button" style="width: 220px; height: 60px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; background-image: url(&apos;project://database/Assets/Devs/Blakes/UI/Arte/png/Button.png?fileID=-1651895678&amp;guid=3db26409daa7c81479e686d229f1159c&amp;type=3#BlueButton&apos;); background-color: rgba(88, 88, 88, 0); font-size: 20px; -unity-font: url(&apos;project://database/Assets/TextMesh%20Pro/Examples%20&amp;%20Extras/Fonts/Bangers.ttf?fileID=12800000&amp;guid=5dd49b3eacc540408c98eee0de38e0f1&amp;type=3#Bangers&apos;); -unity-font-style: bold;" />
+    </ui:VisualElement>
+</ui:UXML>
