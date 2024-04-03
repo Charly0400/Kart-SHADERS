@@ -7,11 +7,6 @@ public class BoxCollision : MonoBehaviour
 {
     private bool canActivate = true;
 
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (canActivate && other.CompareTag("Player"))

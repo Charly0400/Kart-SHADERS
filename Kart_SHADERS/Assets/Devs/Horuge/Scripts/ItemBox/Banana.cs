@@ -5,36 +5,16 @@ using static UnityEditor.Progress;
 
 public class Banana : MonoBehaviour
 {
-    [SerializeField] string playerTag = "Player";
-    private float originalPlayerSpeed;
-    private Player player;
 
-    void Start()
+    public IEnumerator OnTriggerEnter(Collider other)
     {
-        player = GameObject.FindGameObjectWithTag(playerTag).GetComponent<Player>();
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag(playerTag))
+        if (other.CompareTag("Player"))
         {
-            if (player != null)
-            {
-                originalPlayerSpeed = player.speed;
-                player.speed = 0f;
-                Destroy(gameObject);
-                player.Invoke("OgSpeed", 2f);
-            }
-            else
-            {
-                Debug.LogError("No se encontró el script del jugador en el objeto colisionado.");
-            }
+            //other.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            other.GetComponent<Rigidbody>().drag = 100f;
+            yield return new WaitForSeconds(.05f);
+            other.GetComponent<Rigidbody>().drag = 0.1f;
+            Destroy(gameObject);
         }
-    }
-
-    public void Activate()
-    {
-        player.itemB -= 1;
-        Instantiate(player.banana, player.bananaSpawner.position, Quaternion.identity);
     }
 }

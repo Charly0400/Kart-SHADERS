@@ -24,27 +24,27 @@ public class Player : MonoBehaviour
         mushroomScript = GetComponent<Mushroom>();
     }
 
-    void Update()
-    {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+    //void Update()
+    //{
+    //    float horizontalInput = Input.GetAxis("Horizontal");
+    //    float verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput) * speed * Time.deltaTime;
+    //    Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput) * speed * Time.deltaTime;
 
-        transform.Translate(movement);
+    //    transform.Translate(movement);
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (itemA >= 1 && !boosted)
-            {
-                mushroomScript.Activate();
-            }
-            if (itemB >= 1)
-            {
-                bananaScript.Activate();
-            }
-        }
-    }
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        if (itemA >= 1 && !boosted)
+    //        {
+    //            mushroomScript.Activate();
+    //        }
+    //        if (itemB >= 1)
+    //        {
+    //            bananaScript.Activate();
+    //        }
+    //    }
+    //}
 
     public void AddItem(int item)
     {
