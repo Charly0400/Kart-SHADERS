@@ -42,10 +42,6 @@ public class Panel_Scropt : MonoBehaviour
         GetComponent<Animator>().SetTrigger("OpenGameOver");
     }
 
-
-
-
-
     public void Salir()
     {
         Application.Quit();
