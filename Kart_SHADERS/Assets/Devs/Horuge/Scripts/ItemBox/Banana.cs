@@ -5,16 +5,22 @@ using static UnityEditor.Progress;
 
 public class Banana : MonoBehaviour
 {
-
-    public IEnumerator OnTriggerEnter(Collider other)
+    private void Awake()
     {
-        if (other.CompareTag("Player"))
+        gameObject.GetComponent<Rigidbody>().useGravity = false;
+    }
+
+    public IEnumerator OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
-            //other.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            other.GetComponent<Rigidbody>().drag = 100f;
+            collision.gameObject.GetComponent<Rigidbody>().drag = 100f;
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
             yield return new WaitForSeconds(.05f);
-            other.GetComponent<Rigidbody>().drag = 0.1f;
+            collision.gameObject.GetComponent<Rigidbody>().drag = 0.1f;
             Destroy(gameObject);
+            print("return original drag");
+            
         }
     }
 }
