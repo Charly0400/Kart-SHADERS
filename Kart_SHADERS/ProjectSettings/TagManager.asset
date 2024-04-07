@@ -7,6 +7,9 @@ TagManager:
   - chk
   - PlayerCar
   - AICarCollider
+  - Fire
+  - Banana
+  - Mushroom
   layers:
   - Default
   - TransparentFX
