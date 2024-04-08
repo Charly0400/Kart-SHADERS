@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 //this script is used in the Play button from the first menu and the Continue button when you finish the race
 public class Continue : MonoBehaviour
 {
-    [SerializeField] private GameObject RaceUI, LapsBotsPanel, Countdown, FinishCamera, Checkpoints, LapsSelected, BotsSelected;
+    [SerializeField] private GameObject RaceUI, RaceUIP2, LapsBotsPanel, Countdown, CountdownP2, FinishCamera, Checkpoints, LapsSelected, BotsSelected;
     //also, it is used if we hit restart in the pause menu
     public void Restart()
     {   //void restart is used in continue buttons when we finish the race and in return button of the pause menu
@@ -13,7 +13,9 @@ public class Continue : MonoBehaviour
     public void Play()
     {   //all the racing stuff turns on
         RaceUI.SetActive(true); //racing UI
+        RaceUIP2.SetActive(true); //racing UIP"
         Countdown.SetActive(true);  //countdown UI (3,2,1,go)
+        CountdownP2.SetActive(true);  //countdown UI (3,2,1,go)
         Checkpoints.SetActive(true); //racetrack checkpoints
         LapsSelected.SetActive(true); //turn on the lap requirement race-UI text
         BotsSelected.SetActive(true); //turns off the bots depending the amount selected by the player
