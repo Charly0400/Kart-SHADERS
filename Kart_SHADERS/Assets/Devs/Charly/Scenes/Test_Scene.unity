@@ -2165,7 +2165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2311854632769476563
 Transform:
   m_ObjectHideFlags: 0
@@ -5449,6 +5449,7 @@ GameObject:
   - component: {fileID: 8874211148733982828}
   - component: {fileID: 8874211148733982801}
   - component: {fileID: 8874211148733982800}
+  - component: {fileID: 8874211148733982832}
   m_Layer: 0
   m_Name: car-parsche
   m_TagString: PlayerCar
@@ -5549,6 +5550,22 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8874211148733982832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8874211148733982827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40bbec135ced9a4085e1437c6597070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeOfItem: 0
+  bananaPrefab: {fileID: 0}
+  MushroomPrefab: {fileID: 0}
+  kartSpawnerItems: {fileID: 0}
 --- !u!198 &8874211148813198976
 ParticleSystem:
   m_ObjectHideFlags: 0
