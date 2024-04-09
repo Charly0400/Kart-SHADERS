@@ -9,6 +9,10 @@ public class SceneMngr : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
     public void QuitGame()
     {
