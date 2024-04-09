@@ -2,36 +2,49 @@ Shader "Custom/CarLightEmission"
 {
     Properties
     {
-        _Intensity("Light Intensity", Range(0, 5)) = 1
-        _Range("Light Range", Range(0, 10)) = 5
-        _EmissionTex("Emission Texture", 2D) = "white" {}
-        _EmissionColor("Emission Color", Color) = (1,1,1,1)
+        _Color1("Color 1", Color) = (1,1,1,1)
+        _Color2("Color 2", Color) = (1,1,1,1)
+        _Color3("Color 3", Color) = (1,1,1,1)
+        _RimColor("Rim Color", Color) = (1,1,1,1)
+        _RimPower("Rim Power", Range(0.5, 8)) = 3.0
     }
-
         SubShader
+    {
+        Tags { "RenderType" = "Opaque" }
+        LOD 200
+
+        CGPROGRAM
+        #pragma surface surf Lambert
+
+        struct Input
         {
-            Tags { "RenderType" = "Opaque" }
+            float3 worldNormal;
+        };
 
-            CGPROGRAM
-            #pragma surface surf Lambert
+        half _RimPower;
 
-            struct Input
-            {
-                float2 uv_EmissionTex;
-            };
+        fixed4 _Color1;
+        fixed4 _Color2;
+        fixed4 _Color3;
+        fixed4 _RimColor;
 
-            sampler2D _EmissionTex;
-            fixed4 _EmissionColor;
-            float _Intensity;
-            float _Range;
+        void surf(Input IN, inout SurfaceOutput o)
+        {
+            half rim = 1.0 - saturate(dot(normalize(IN.worldNormal), _WorldSpaceCameraPos));
+            rim = pow(rim, _RimPower);
 
-            void surf(Input IN, inout SurfaceOutput o)
-            {
-                fixed4 emissionTexColor = tex2D(_EmissionTex, IN.uv_EmissionTex) * _EmissionColor * _Intensity;
-                o.Emission = emissionTexColor.rgb;
-            }
-            ENDCG
+            fixed3 color1 = _Color1.rgb;
+            fixed3 color2 = _Color2.rgb;
+            fixed3 color3 = _Color3.rgb;
+
+            half blend = dot(normalize(IN.worldNormal), float3(1, 1, 1)) / 3.0;
+
+            fixed3 finalColor = lerp(lerp(color1, color2, blend), color3, blend);
+
+            o.Albedo = finalColor;
+            o.Emission = _RimColor.rgb * rim;
         }
-
-    FallBack "Diffuse"
+        ENDCG
+    }
+        FallBack "Diffuse"
 }

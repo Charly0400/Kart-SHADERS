@@ -3,40 +3,41 @@ Shader "Custom/TireShadder"
     Properties
     {
         _MainTex("Texture", 2D) = "white" {}
-        _EmissionColor("Emission Color", Color) = (0, 1, 0, 1)
-        _EmissionStrength("Emission Strength", Range(0.0, 10.0)) = 1.0
+        _Color1("Color 1", Color) = (1,1,1,1)
+        _Color2("Color 2", Color) = (1,1,1,1)
+        _Color3("Color 3", Color) = (1,1,1,1)
+        _Color4("Color 4", Color) = (1,1,1,1)
     }
+    SubShader {
+        Tags { "RenderType" = "Opaque" }
+        LOD 200
 
-        SubShader
-        {
-            Tags { "RenderType" = "Opaque" }
-            LOD 200
+        CGPROGRAM
+        #pragma surface surf Lambert
 
-            CGPROGRAM
-            #pragma surface surf Lambert
+        sampler2D _MainTex;
+        fixed4 _Color1;
+        fixed4 _Color2;
+        fixed4 _Color3;
+        fixed4 _Color4;
 
-            struct Input
-            {
-                float2 uv_MainTex;
-            };
+        struct Input {
+            float2 uv_MainTex;
+        };
 
-            sampler2D _MainTex;
-            fixed4 _EmissionColor;
-            float _EmissionStrength;
+        void surf(Input IN, inout SurfaceOutput o) {
+            fixed4 texColor = tex2D(_MainTex, IN.uv_MainTex);
 
-            void surf(Input IN, inout SurfaceOutput o)
-            {
-                fixed4 texColor = tex2D(_MainTex, IN.uv_MainTex);
-
-                o.Albedo = texColor.rgb; // Color de la textura sin modificar
-
-                // Emission basada en la distancia
-                float distanceToEdge = 1.0 - length(IN.uv_MainTex - 0.5);
-                o.Emission = _EmissionColor.rgb * smoothstep(0.3, 0.4, distanceToEdge) * _EmissionStrength;
-
-                o.Alpha = texColor.a;
-            }
-            ENDCG
+            if (IN.uv_MainTex.x < 0.5 && IN.uv_MainTex.y < 0.5)
+                o.Albedo = texColor * _Color1;
+            else if (IN.uv_MainTex.x < 0.5 && IN.uv_MainTex.y >= 0.5)
+                o.Albedo = texColor * _Color2;
+            else if (IN.uv_MainTex.x >= 0.5 && IN.uv_MainTex.y < 0.5)
+                o.Albedo = texColor * _Color3;
+            else
+                o.Albedo = texColor * _Color4;
         }
+        ENDCG
+    }
     FallBack "Diffuse"
 }

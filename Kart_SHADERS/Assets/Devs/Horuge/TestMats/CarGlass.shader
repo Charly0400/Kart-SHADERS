@@ -2,36 +2,48 @@ Shader "Custom/CarLightEmission"
 {
     Properties
     {
-        _Intensity("Light Intensity", Range(0, 5)) = 1
-        _Range("Light Range", Range(0, 10)) = 5
-        _EmissionTex("Emission Texture", 2D) = "white" {}
-        _EmissionColor("Emission Color", Color) = (1,1,1,1)
+        _Color("Color", Color) = (1,1,1,1)
+        _Glossiness("Smoothness", Range(0,1)) = 0.5
+        _Metallic("Metallic", Range(0,1)) = 0.0
+        _DistortionStrength("Distortion Strength", Range(0,1)) = 0.1
+        _DistortionSpeed("Distortion Speed", Range(0,10)) = 1.0
     }
-
         SubShader
+    {
+        Tags { "RenderType" = "Opaque" }
+        LOD 200
+
+        CGPROGRAM
+        #pragma surface surf Standard fullforwardshadows
+        #pragma target 3.0
+
+        struct Input
         {
-            Tags { "RenderType" = "Opaque" }
+            float2 uv_MainTex;
+            float3 worldPos;
+        };
 
-            CGPROGRAM
-            #pragma surface surf Lambert
+        fixed4 _Color;
+        float _Glossiness;
+        float _Metallic;
+        float _DistortionStrength;
+        float _DistortionSpeed;
 
-            struct Input
-            {
-                float2 uv_EmissionTex;
-            };
+        void surf(Input IN, inout SurfaceOutputStandard o)
+        {
+            fixed4 baseColor = _Color;
+            o.Albedo = baseColor.rgb;
+            o.Alpha = baseColor.a;
+            o.Metallic = _Metallic;
+            o.Smoothness = _Glossiness;
 
-            sampler2D _EmissionTex;
-            fixed4 _EmissionColor;
-            float _Intensity;
-            float _Range;
+            float distortion = sin(_Time.y * _DistortionSpeed + IN.uv_MainTex.x * 10) * _DistortionStrength;
+            float2 distortedUV = IN.uv_MainTex + float2(distortion, distortion);
+            o.Normal = UnpackNormal(fixed4(distortedUV, 0, 0));
 
-            void surf(Input IN, inout SurfaceOutput o)
-            {
-                fixed4 emissionTexColor = tex2D(_EmissionTex, IN.uv_EmissionTex) * _EmissionColor * _Intensity;
-                o.Emission = emissionTexColor.rgb;
-            }
-            ENDCG
+            o.Normal = normalize(reflect(IN.worldPos - _WorldSpaceCameraPos, o.Normal));
         }
-
-    FallBack "Diffuse"
+        ENDCG
+    }
+        FallBack "Diffuse"
 }

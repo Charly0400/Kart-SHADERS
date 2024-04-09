@@ -26,10 +26,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _EdgeWidth: 0.1
     - _EmissionStrength: 0.25
     - _InnerRadius: 0.2
+    - _NeonIntensity: 1
     - _OuterRadius: 0.128
+    - _OutlineWidth: 0.05
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color1: {r: 1, g: 0, b: 0, a: 1}
+    - _Color2: {r: 1, g: 0.9004603, b: 0, a: 1}
+    - _Color3: {r: 0, g: 0.07144785, b: 1, a: 1}
+    - _Color4: {r: 0.07953906, g: 1, b: 0, a: 1}
+    - _EdgeColor: {r: 0, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 0, b: 0.7710304, a: 1}
+    - _NeonColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BackCarLight
-  m_Shader: {fileID: 4800000, guid: 836c51563fd598c4293002b3a9c43caa, type: 3}
+  m_Name: CarMainSurf
+  m_Shader: {fileID: 4800000, guid: 8e1abdc6b10085b48a0667bc00eba43c, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -20,21 +20,20 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _EmissionTex:
-        m_Texture: {fileID: 2800000, guid: ecfa2f418918cd640ae45ecb99760894, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 8900000, guid: 4f05f91913796e947a7edbdbf42fdbeb, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Glossiness: 0.5
-    - _Intensity: 1
-    - _Metallic: 0
-    - _Range: 5
+    - _EmissionStrength: 0.5
+    - _Glossiness: 0.75
+    - _Metallic: 1
     m_Colors:
-    - _EmissionColor: {r: 0.9433962, g: 0, b: 0, a: 1}
-    - _TintColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.2293998, g: 1, b: 0, a: 1}
+    - _Color1: {r: 0.22773254, g: 1, b: 0, a: 1}
+    - _Color2: {r: 1, g: 0, b: 0, a: 1}
+    - _ColorNegativeX: {r: 0.20242429, g: 1, b: 0, a: 1}
+    - _ColorPositiveX: {r: 1, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0, g: 0.060430765, b: 1, a: 1}
   m_BuildTextureStacks: []
