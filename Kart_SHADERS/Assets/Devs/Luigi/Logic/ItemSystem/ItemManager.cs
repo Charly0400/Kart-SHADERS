@@ -56,7 +56,7 @@ public class ItemManager : MonoBehaviour
         }
         else if (TempItem.gameObject.CompareTag("Mushroom"))
         {
-            TempItem.GetComponent<MushroomLogic>().Boost();
+            TempItem.gameObject.GetComponent<MushroomLogic>().Boost();
         }
         TempItem = null;
     }

@@ -5,7 +5,7 @@ public class CarCamera : MonoBehaviour
     Transform rootNode;
     Transform car;
     Rigidbody carPhysics;
-    private GameObject PlayerCar;
+    [SerializeField] private GameObject PlayerCar;
     public float posX, posY, posZ;
     public float rotX;
 
@@ -20,7 +20,8 @@ public class CarCamera : MonoBehaviour
 
     private void Start()
     {
-        PlayerCar = GameObject.FindGameObjectWithTag("PlayerCar");
+        //PlayerCar = GameObject.FindGameObjectWithTag("Player");
+        //Debug.Log(PlayerCar, PlayerCar);
     }
 
     void LateUpdate()
@@ -29,7 +30,9 @@ public class CarCamera : MonoBehaviour
         float rotZ = GetComponent<Camera>().transform.eulerAngles.z;
         GetComponent<Camera>().transform.Rotate(rotX, 0, -rotZ);
         rootNode = GetComponent<Transform>();
+        Debug.Log(rootNode, rootNode);
         car = PlayerCar.GetComponent<Transform>();
+        Debug.Log(car, car);
         carPhysics = PlayerCar.GetComponent<Rigidbody>();
         Quaternion look;
 

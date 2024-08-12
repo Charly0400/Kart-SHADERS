@@ -18,6 +18,7 @@ public class LapSelector : MonoBehaviour
     //with the + button in the game, the void Up is called and 1 more lap is added to the race
     public void Up()
     {
+        print("Entro al up");
         nLaps = Convert.ToInt32(Laps.GetComponent<Text>().text) + 1;//the number of selected laps goes 1 up
         Laps.GetComponent<Text>().text = Convert.ToString(nLaps);//here we convert the int to string to show it in the UI text from the laps panel
         //the max of laps its 5 and it deactivates the + button
